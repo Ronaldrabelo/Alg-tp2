@@ -1,8 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
-#include "maxflow.h"
-#include "graphutils.h"
+#include <climits>
+#include "services/MaxFlow.h"
+#include "utils/GraphUtils.h"
 
 using namespace std;
 

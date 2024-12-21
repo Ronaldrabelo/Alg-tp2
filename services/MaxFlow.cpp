@@ -7,7 +7,7 @@
 #include <climits>
 
 bool bfs(const vector<vector<int>>& residualGraph, int source, int sink, vector<int>& parent) {
-    int n = residualGraph.size();
+    size_t n = residualGraph.size();
     vector<bool> visited(n, false);
     queue<int> q;
     q.push(source);
@@ -18,13 +18,13 @@ bool bfs(const vector<vector<int>>& residualGraph, int source, int sink, vector<
         int u = q.front();
         q.pop();
 
-        for (int v = 0; v < n; v++) {
+        for (size_t v = 0; v < n; v++) {
             if (!visited[v] && residualGraph[u][v] > 0) {
-                if (v == sink) {
+                if (static_cast<int>(v) == sink) {
                     parent[v] = u;
                     return true;
                 }
-                q.push(v);
+                q.push(static_cast<int>(v));
                 parent[v] = u;
                 visited[v] = true;
             }
@@ -35,7 +35,7 @@ bool bfs(const vector<vector<int>>& residualGraph, int source, int sink, vector<
 
 int fordFulkerson(vector<vector<int>>& graph, int source, int sink, vector<vector<int>>& residualGraph) {
     int u, v;
-    int n = graph.size();
+    size_t n = graph.size();
     residualGraph = graph;
     vector<int> parent(n);
     int maxFlow = 0;
